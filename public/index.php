@@ -14,10 +14,9 @@ $twig = new \Twig\Environment($loader);
 
 $url = $_SERVER["REQUEST_URI"];
 
-// добавил две переменные
+
 $title = "";
 $template = "";
-
 $context = [];
 
 if ($url == "/") {
@@ -25,18 +24,19 @@ if ($url == "/") {
     $template = "main.twig";
 
 } elseif (preg_match("#/RTX4000#", $url)) {
-    $title = "RTX4000 ВИДЯХИ";
-    $template = "RTX4000.twig";
+    $title = "RTX4000";
+    $template = "base_image.twig";
 
-    $context['image'] = "/images/RTX4000.jpg";
+    $context['image'] = "/images/RTX4000image.jpg";
 } elseif (preg_match("#/RTX5000#", $url)) {
-    $title = "RTX5000 ВИДЯХИ";
-    $template = "RTX5000.twig";
+    $title = "RTX5000";
+    $template = "base_image.twig";
 
-    $context['image'] = "/images/RTX5000.jpg";
+    $context['image'] = "/images/RTX5000image.jpg";
 }
+
 $context['title'] = $title;
-// рендеринг делаем один раз по заполненным переменным
+// ну и рендерю
 echo $twig->render($template, $context);
 
 // ..
