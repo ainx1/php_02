@@ -65,10 +65,6 @@ elseif (preg_match("#^/RTX5000#", $url)) {
         $template = "RTX5000_info.twig";
     }
 }
-else {
-    $title = "404";
-    $template = "404.twig";
-}
 
 $context['title'] = $title;
 $context['menu'] = $menu; // передаем меню в контекст
