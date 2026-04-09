@@ -1,0 +1,14 @@
+{% extends "__layout.twig" %}
+
+{% block content %}
+    <div>
+    <h2>Раздел видеокарты: {{ title }}</h2>
+    
+    <div style="margin-bottom: 20px;">
+        <a href="/{{ title }}/image">Картинка</a>  
+        <a href="/{{ title }}/info">Описание</a>
+    </div>
+    </div>
+    {% block objectContent %}
+    {% endblock %}
+{% endblock %}

@@ -4,15 +4,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ title }}</title>
+
+    <style>
+        .active {
+            font-weight: bold;
+            color: red;
+        }
+    </style>
 </head>
 <body>
+
     <div>
-        <a href="/">Главная</a> 
-        <a href="/RTX4000">4060 КАЙФ ВИДЯХА</a>
-        <a href="/RTX5000">5000 КАЙФ ВИДЯХА</a>
+        {% for item in menu %}
+            <a href="{{item.url}}" class="{{ title == item.title ? 'active' }}">{{item.title}}</a>
+        {% endfor %}
     </div>
+
     {% block content %}
         пустота
     {% endblock %}
+    
 </body>
 </html>
