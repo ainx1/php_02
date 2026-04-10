@@ -26,7 +26,8 @@ $title = "";
 $template = "";
 $context = [];
 
-$controller = null; // создаем переменную для контроллера, по умолчанию null
+$controller = new Controller404($twig);
+
 
 $menu = [
     [
