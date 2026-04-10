@@ -1,0 +1,9 @@
+{% macro btn(text, url, active, type = "primary") %}
+    {# 
+       active (true/false) определяет, будет ли кнопка цветной или просто ссылкой.
+       type (по умолчанию primary) определяет цвет кнопки из набора Bootstrap.
+    #}
+    <a href="{{ url }}" class="btn btn-{{ active ? type : 'link' }}">
+        {{ text }}
+    </a>
+{% endmacro %}
