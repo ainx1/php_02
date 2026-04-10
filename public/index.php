@@ -19,7 +19,7 @@ $title = "";
 $template = "";
 $context = [];
 
-$menu = [ // добавил список словариков
+$menu = [
     [
         "title" => "Главная",
         "url" => "/",
@@ -38,30 +38,26 @@ $menu = [ // добавил список словариков
 if ($url == "/") {
     $title = "Главная";
     $template = "main.twig";
-
-    } elseif (preg_match("#^/RTX4000#", $url)) {
-        $title = "RTX4000";
-        $template = "__object.twig";
+} elseif (preg_match("#^/RTX4000#", $url)) {
+    $title = "RTX4000";
+    $template = "__object.twig";
 
     if (preg_match("#^/RTX4000/image#", $url)) {
-        
+
         $template = "base_image.twig";
         $context['image'] = "/images/RTX4000image.jpg";
-    }
-    elseif (preg_match("#^/RTX4000/info#", $url)) {
+    } elseif (preg_match("#^/RTX4000/info#", $url)) {
         $template = "RTX4000_info.twig";
     }
-}
-elseif (preg_match("#^/RTX5000#", $url)) {
+} elseif (preg_match("#^/RTX5000#", $url)) {
 
     $title = "RTX5000";
     $template = "__object.twig";
-    
+
     if (preg_match("#^/RTX5000/image#", $url)) {
         $template = "base_image.twig";
         $context['image'] = "/images/RTX5000image.jpg";
-    }
-    elseif (preg_match("#^/RTX5000/info#", $url)) {
+    } elseif (preg_match("#^/RTX5000/info#", $url)) {
         $template = "RTX5000_info.twig";
     }
 }
