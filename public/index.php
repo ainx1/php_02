@@ -10,6 +10,8 @@ require_once "../controllers/RTX5000ImageController.php";
 require_once "../controllers/RTX4000ImageController.php";
 require_once "../controllers/RTX4000InfoController.php";
 require_once "../controllers/RTX5000InfoController.php";
+
+require_once "../controllers/Controller404.php";
 // создаем загрузчик шаблонов, и указываем папку с шаблонами
 // \Twig\Loader\FilesystemLoader -- это типа как в C# писать Twig.Loader.FilesystemLoader, 
 // только слеш вместо точек
