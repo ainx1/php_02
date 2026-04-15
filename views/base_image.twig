@@ -1,5 +1,5 @@
 {% extends "__object.twig" %}
 
 {% block objectContent %}<!-- поменял тут content на objectContent -->
-<img src="{{ image }}" style="width: 300px;"/>
+<img src="{{ image }}" style="flex: 1 1 300px; max-height: 72vh; object-fit: contain;"/>   
 {% endblock %}
