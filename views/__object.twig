@@ -1,18 +1,13 @@
 {% extends "__layout.twig" %}
-
+{% import "macros.twig" as ui %}
 {% block content %}
     <div class="card p-4 shadow">
         <h1>{{ title }}</h1>
         
-        <ul class="nav nav-pills mb-2">
-            <li class="nav-item">
-                <a class="nav-link" href="/{{ title }}/image">Картинка</a>  
-            </li>
-            
-            <li class="nav-item">
-                <a class="nav-link" href="/{{ title }}/info">Описание</a>
-            </li>
-        </ul>
+        <div class="mb-2">
+            {{ ui.btn("Картинка", "/" ~ title ~ "/image", (title in template and "image" in template), "warning") }}
+            {{ ui.btn("Описание", "/" ~ title ~ "/info", (title in template and "info" in template), "warning") }}
+        </div>
 <hr>
 
         {% block objectContent %}

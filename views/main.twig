@@ -1,4 +1,14 @@
-{% extends "__layout.twig" %} 
-{% block content %} 
-Я главная страница 
+{% extends "__layout.twig" %}
+
+{% block content %}
+<h1 class="mb-4">Мир видеокарт</h1>
+
+<div class="row">
+    {% for item in menu %}
+        {# Пропускаем ссылку на 'Главную' в списке карточек объектов #}
+        {% if item.url != "/" %}
+            {% include "_gpu_card.twig" with {'item': item} %}
+        {% endif %}
+    {% endfor %}
+</div>
 {% endblock %}

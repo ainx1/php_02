@@ -25,8 +25,8 @@ class TwigBaseController extends BaseController
         $context['title'] = $this->title; // добавляем title в контекст
         $context['menu'] = [
             ["title" => "Главная", "url" => "/"],
-            ["title" => "RTX4000", "url" => "/RTX4000"],
-            ["title" => "RTX5000", "url" => "/RTX5000"],
+            ["title" => "RTX4000", "url" => "/RTX4000", "image" => "/images/RTX4000image.jpg"],
+            ["title" => "RTX5000", "url" => "/RTX5000", "image" => "/images/RTX5000image.jpg"],
         ];
 
         return $context;
