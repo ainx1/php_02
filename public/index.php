@@ -29,22 +29,6 @@ $context = [];
 $controller = new Controller404($twig);
 
 
-$menu = [
-    [
-        "title" => "Главная",
-        "url" => "/",
-    ],
-    [
-        "title" => "RTX4000",
-        "url" => "/RTX4000",
-    ],
-    [
-        "title" => "RTX5000",
-        "url" => "/RTX5000",
-    ]
-];
-
-
 if ($url == "/") {
     $controller = new MainController($twig);
 } elseif (preg_match("#^/RTX4000/image#", $url)) {
@@ -63,10 +47,3 @@ if ($url == "/") {
 if ($controller) {
     $controller->get();
 }
-
-// $context['title'] = $title;
-// $context['menu'] = $menu; // передаем меню в контекст
-// ну и рендерю
-// echo $twig->render($template, $context);
-
-// ..
