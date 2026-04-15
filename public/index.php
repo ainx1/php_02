@@ -1,6 +1,4 @@
 <?php
-
-
 // подключаем пакеты которые установили через composer
 require_once '../vendor/autoload.php';
 require_once "../controllers/MainController.php"; // добавим в самом верху ссылку на наш контроллер
@@ -27,7 +25,6 @@ $template = "";
 $context = [];
 
 $controller = new Controller404($twig);
-
 
 if ($url == "/") {
     $controller = new MainController($twig);

@@ -23,6 +23,9 @@ class TwigBaseController extends BaseController
     {
         $context = parent::getContext(); // вызываем родительский метод
         $context['title'] = $this->title; // добавляем title в контекст
+
+        $context['current_url'] = $_SERVER['REQUEST_URI'];
+
         $context['menu'] = [
             ["title" => "Главная", "url" => "/"],
             ["title" => "RTX4000", "url" => "/RTX4000", "image" => "/images/RTX4000image.jpg"],

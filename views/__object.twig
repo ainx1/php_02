@@ -1,12 +1,16 @@
 {% extends "__layout.twig" %}
-{% import "macros.twig" as ui %}
+{% import "macros.twig" as m %}
 {% block content %}
     <div class="card p-4 shadow">
         <h1>{{ title }}</h1>
         
-        <div class="mb-2">
-            {{ ui.btn("Картинка", "/" ~ title ~ "/image", (title in template and "image" in template), "warning") }}
-            {{ ui.btn("Описание", "/" ~ title ~ "/info", (title in template and "info" in template), "warning") }}
+        <div class="nav-pills mb-2">
+            {% set image_url = "/" ~ title ~ "/image" %}
+            {% set info_url = "/" ~ title ~ "/info" %}
+
+            {# Сравниваем: если текущий URL совпадает с URL кнопки, она станет синей #}
+            {{ m.btn("Картинка", image_url, current_url == image_url) }}
+            {{ m.btn("Описание", info_url, current_url == info_url) }}
         </div>
 <hr>
 

@@ -1,4 +1,4 @@
-{% import "macros.twig" as ui %}
+{% import "macros.twig" as m %}
 
 <div class="col-md-6 mb-4">
     <div class="card h-100 shadow-sm">
@@ -7,13 +7,17 @@
         <div class="card-body text-center">
             <h5 class="card-title">{{ item.title }}</h5>
             
-            {# Главная кнопка серии #}
-            {{ ui.btn(item.title, item.url, true, "primary") }}
+<div class="row justify-content-center">
+    {# col-9 — это 75% ширины. Поставь col-10, если хочешь чуть шире #}
+    <div class="col-9 d-flex flex-column">
+        {{ m.btn(item.title, item.url, true) }}
+    </div>
+</div>
             
-            <div class="mt-2">
-                {# Кнопки Картинка и Описание переводятся в стиль link (active = false) #}
-                {{ ui.btn("Картинка", item.url ~ "/image", false) }}
-                {{ ui.btn("Описание", item.url ~ "/info", false) }}
+            <div class="mt-2 d-flex justify-content-evenly">
+
+                {{ m.btn("Картинка", item.url ~ "/image") }}
+                {{ m.btn("Описание", item.url ~ "/info") }}
             </div>
         </div>
     </div>
