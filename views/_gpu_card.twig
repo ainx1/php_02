@@ -2,23 +2,24 @@
 
 <div class="col-md-6 mb-4">
     <div class="card h-100 shadow-sm">
-        {# Предполагаем, что в объекте item есть путь к картинке #}
         <img src="{{ item.image }}" class="card-img-top" alt="{{ item.title }}">
+        
         <div class="card-body text-center">
             <h5 class="card-title">{{ item.title }}</h5>
-            
-<div class="row justify-content-center">
-    {# col-9 — это 75% ширины. Поставь col-10, если хочешь чуть шире #}
-    <div class="col-9 d-flex flex-column">
-        {{ m.btn(item.title, item.url, true) }}
-    </div>
-</div>
-            
-            <div class="mt-2 d-flex justify-content-evenly">
-
-                {{ m.btn("Картинка", item.url ~ "/image") }}
-                {{ m.btn("Описание", item.url ~ "/info") }}
+        <div class="row justify-content-center">  
+                <div class="col-10 col-sm-6 col-md-8 col-lg-6">
+        
+                    <div class="d-flex flex-column mb-1">
+                        {{ m.btn(item.title, item.url, true) }}
+                    </div>
+                    
+                    <div class="d-flex justify-content-evenly">
+                            {{ m.btn("Картинка", item.url ~ "/image") }}
+                            {{ m.btn("Описание", item.url ~ "/info") }}
+                    </div>
+                    
+                </div>
             </div>
         </div>
     </div>
-</div>
+</div>    
