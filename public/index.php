@@ -20,11 +20,21 @@ $twig = new \Twig\Environment($loader);
 
 $url = $_SERVER["REQUEST_URI"];
 
+$loader = new \Twig\Loader\FilesystemLoader('../views');
+$twig = new \Twig\Environment($loader, [
+    "debug" => true // добавляем тут debug режим
+]);
+$twig->addExtension(new \Twig\Extension\DebugExtension()); // и активируем расширение
+
 $title = "";
 $template = "";
 $context = [];
 
 $controller = new Controller404($twig);
+
+// создаем экземпляр класса и передаем в него параметры подключения
+// создание класса автоматом открывает соединение
+$pdo = new PDO("mysql:host=localhost;dbname=videocards_db;charset=utf8", "root", "");
 
 if ($url == "/") {
     $controller = new MainController($twig);
@@ -42,5 +52,6 @@ if ($url == "/") {
     $controller = new RTX5000Controller($twig);
 }
 if ($controller) {
+    $controller->setPDO($pdo); // а тут передаем PDO в контроллер
     $controller->get();
 }

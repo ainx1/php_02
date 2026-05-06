@@ -2,6 +2,13 @@
 // класс абстрактный, чтобы нельзя было создать экземпляр
 abstract class BaseController
 {
+    public PDO $pdo; // добавил поле
+
+    public function setPDO(PDO $pdo)
+    { // и сеттер для него
+        $this->pdo = $pdo;
+    }
+
     // так как все вертится вокруг данных, то заведем функцию,
     // которая будет возвращать контекст с данными
     public function getContext(): array
