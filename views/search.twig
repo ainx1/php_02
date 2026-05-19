@@ -8,10 +8,14 @@
         <div class="row g-3 align-items-end">   
             <div class="col-md-auto">
                <label class="form-label">Тип</label>
-                    <select name="type" class="form-select">
-                        <option value="all" {% if type == 'all' %} selected{% endif %}>Все</option>
-                        <option value="GTX" {% if type == 'GTX' %} selected{% endif %}>GTX</option>
-                        <option value="RTX" {% if type == 'RTX' %} selected{% endif %}>RTX</option>
+                    <select name="type_id" class="form-select"> 
+                        <option value="all">Все</option>
+                        {# надо фильтрацию делать по id типа #}
+                        {% for type in types %}
+                            <option value="{{ type.id }}" {% if type.id == type_id  %}selected{% endif %}>
+                                {{ type.title }}
+                            </option>
+                        {% endfor %}
                     </select> 
             </div>
 

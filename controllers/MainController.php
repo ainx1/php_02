@@ -9,11 +9,11 @@ class MainController extends BaseVideocardsTwigController
     public function getContext(): array
     {
         $context = parent::getContext();
+        // надо фильтрацию делать по id типа
+        if (isset($_GET['type_id'])) {
 
-        if (isset($_GET['type'])) {
-
-            $query = $this->pdo->prepare("SELECT * FROM videocards_object WHERE type = :type");
-            $query->bindValue("type", $_GET['type']);
+            $query = $this->pdo->prepare("SELECT * FROM videocards_object WHERE type_id = :type_id");
+            $query->bindValue("type_id", $_GET['type_id']);
             $query->execute();
         } else {
             // подготавливаем запрос SELECT * FROM videocards

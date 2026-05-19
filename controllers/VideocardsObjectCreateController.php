@@ -17,7 +17,7 @@ class VideocardsObjectCreateController extends BaseVideocardsTwigController
         // получаем значения полей с формы
         $title = $_POST['title'];
         $description = $_POST['description'];
-        $type = $_POST['type'];
+        $type_id = $_POST['type_id']; // изменил на type_id, тк теперь передаем id типа а не его название
         $info = $_POST['info'];
 
         // вытащил значения из $_FILES
@@ -32,8 +32,8 @@ class VideocardsObjectCreateController extends BaseVideocardsTwigController
 
         // создаем текст запрос
         $sql = <<<EOL
-INSERT INTO videocards_object(title, description, type, info, image)
-VALUES(:title, :description, :type, :info, :image_url) -- передаем переменную в запрос
+INSERT INTO videocards_object(title, description, type_id, info, image)
+VALUES(:title, :description, :type_id, :info, :image_url) -- передаем переменную в запрос
 EOL;
 
         // подготавливаем запрос к БД
@@ -41,7 +41,7 @@ EOL;
         // привязываем параметры
         $query->bindValue("title", $title);
         $query->bindValue("description", $description);
-        $query->bindValue("type", $type);
+        $query->bindValue("type_id", $type_id);
         $query->bindValue("info", $info);
         $query->bindValue("image_url", $image_url); // подвязываем значение ссылки к переменной  image_url
         // выполняем запрос

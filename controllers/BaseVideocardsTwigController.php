@@ -7,10 +7,8 @@ class BaseVideocardsTwigController extends TwigBaseController
         $context = parent::getContext();
 
         // создаем запрос к БД
-        $query = $this->pdo->query("SELECT DISTINCT type FROM videocards_object ORDER BY 1");
-        // стягиваем данные
-        $types = $query->fetchAll();
-        $context['types'] = $types;
+        $query = $this->pdo->query("SELECT id, title FROM videocards_types"); //В навигации выводить значения из этой таблицы
+        $context['types'] = $query->fetchAll();
 
         return $context;
     }

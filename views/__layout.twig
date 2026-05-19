@@ -27,8 +27,8 @@
 
                 {% for type in types %}
                     <li class="nav-item">
-                        <!-- добавил href="/?type={{ type.type }}" -->
-                        <a class="nav-link {% if current_url == '/?type=' ~ type.type %}active{% endif %}" href="/?type={{ type.type }}">{{ type.type }}</a>
+                        {# <!-- добавил href="/?type={{ type.type }}" --> В навигации... выводить значения из этой таблицы #}
+                        <a class="nav-link {% if current_url == '/?type_id=' ~ type.id %}active{% endif %}" href="/?type_id={{ type.id }}">{{ type.title }}</a>
                     </li>
                 {% endfor %}
 
@@ -38,6 +38,10 @@
 
                 <li class="nav-item">
                     <a class="nav-link {% if current_url == '/create' %}active{% endif %}" aria-current="page" href="/create">Добавить</a>
+                </li>
+                
+                 <li class="nav-item">
+                    <a class="nav-link {% if current_url == '/type/create' %}active{% endif %}" aria-current="page" href="/type/create">Тип</a>
                 </li>
 
             </ul>

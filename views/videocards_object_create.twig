@@ -22,9 +22,11 @@
         </div>
         <div class="col-4">
             <label class="form-label">Тип</label>
-            <select class="form-control" name="type">
-                <option value="GTX">GTX</option>
-                <option value="RTX">RTX</option>
+            {#  при добавлении новых объектов в списке выводить значения из таблицы #}
+            <select class="form-control" name="type_id">
+                {% for type in types %}
+                    <option value="{{ type.id }}">{{ type.title }}</option>
+                {% endfor %}
             </select>
         </div>
         <div class="col-12">

@@ -1,0 +1,27 @@
+{% extends "__layout.twig" %}
+
+{% block content %}
+    <h1>Добавить новый тип</h1>
+    <hr>
+
+    {# Вывод сообщения об успехе #}
+    {% if message %}
+        <div class="alert alert-info">
+            {{ message }}! ID нового типа: {{ id }}
+        </div>
+    {% endif %}
+
+    <form action="" enctype="multipart/form-data" method="POST" class="row g-3">
+        <div class="col-6">
+            <label class="form-label">Название типа</label>
+            <input type="text" class="form-control" name="title" required>
+        </div>
+        <div class="col-6">
+            <label class="form-label">Картинка</label>
+            <input class="form-control" type="file" name="image">
+        </div>
+        <div class="col-12 text-end">
+            <button type="submit" class="btn btn-primary">Создать тип</button>
+        </div>
+    </form>
+{% endblock %}
