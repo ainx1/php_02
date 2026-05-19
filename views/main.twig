@@ -4,8 +4,7 @@
 <h1 class="mb-4">Мир видеокарт</h1>
 
 <div class="row">
-    {% for object in videocards_object %}
-
+    {% for object in videocards_object %} //videocards_object таблица бд
 
         {% set item_with_url = object|merge({'url': '#'}) %}
         
