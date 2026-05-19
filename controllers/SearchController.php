@@ -12,6 +12,8 @@ class SearchController extends BaseVideocardsTwigController
         $type = isset($_GET['type']) ? $_GET['type'] : '';
         $title = isset($_GET['title']) ? $_GET['title'] : '';
 
+
+        
         $sql = <<<EOL
 SELECT id, title
 FROM videocards_object

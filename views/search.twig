@@ -12,4 +12,12 @@
         <button type="submit">Найти</button>
     </form>
 
+    <div class="row">
+    {% for obj in objects %}
+            <a href="/videocards_object/{{ obj.id }}">{{ obj.title }}</a>
+    {% else %}
+        Ничего не найдено
+    {% endfor %}
+    </div>
+
 {% endblock %}
