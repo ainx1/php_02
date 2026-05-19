@@ -21,15 +21,23 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
 
-            {% for type in types %}
                 <li class="nav-item">
-                    <!-- добавил href="/?type={{ type.type }}" -->
-                    <a class="nav-link" href="/?type={{ type.type }}">{{ type.type }}</a>
+                    <a class="nav-link active" aria-current="page" href="/">Главная</a>
                 </li>
-            {% endfor %}
+
+                {% for type in types %}
+                    <li class="nav-item">
+                        <!-- добавил href="/?type={{ type.type }}" -->
+                        <a class="nav-link {% if current_url == '/?type=' ~ type.type %}active{% endif %}" href="/?type={{ type.type }}">{{ type.type }}</a>
+                    </li>
+                {% endfor %}
 
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="/search">Поиск</a>
+                    <a class="nav-link {% if current_url == '/search' %}active{% endif %}" aria-current="page" href="/search">Поиск</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link {% if current_url == '/create' %}active{% endif %}" aria-current="page" href="/create">Добавить</a>
                 </li>
 
             </ul>

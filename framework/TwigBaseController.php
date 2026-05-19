@@ -13,14 +13,15 @@ class TwigBaseController extends BaseController
     // это кстати Dependency Injection называется
     // это лучше чем создавать глобальный объект $twig 
     // и быстрее чем создавать персональный $twig обработчик для каждого класс 
-     
+
     // убираем
     // public function __construct($twig)
     // {
     //     $this->twig = $twig;
     // }
     // добавляем
-    public function setTwig($twig) {
+    public function setTwig($twig)
+    {
         $this->twig = $twig;
     }
 
@@ -34,8 +35,8 @@ class TwigBaseController extends BaseController
 
         // $context['menu'] = [
         //     ["title" => "Главная", "url" => "/"],
-        //     ["title" => "RTX4000", "url" => "/RTX4000", "image" => "/images/RTX4000image.jpg"],
-        //     ["title" => "RTX5000", "url" => "/RTX5000", "image" => "/images/RTX5000image.jpg"],
+        //     ["title" => "Поиск", "url" => "/search"],
+        //     ["title" => "Добавить", "url" => "/create"],
         // ];
 
         return $context;
@@ -43,8 +44,8 @@ class TwigBaseController extends BaseController
 
     // функция гет, рендерит результат используя $template в качестве шаблона
     // и вызывает функцию getContext для формирования словаря контекста
-    public function get()
-    {
-        echo $this->twig->render($this->template, $this->getContext());
+    public function get(array $context)
+    { // добавил аргумент в get
+        echo $this->twig->render($this->template, $context); // а тут поменяем getContext на просто $context
     }
 }

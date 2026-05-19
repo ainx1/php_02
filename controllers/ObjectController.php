@@ -4,7 +4,7 @@ class ObjectController extends BaseVideocardsTwigController
 {
     public $template = "__object.twig"; // указываем шаблон
 
-    public function get()
+    public function get(array $context)
     {
         // Получаем 'show' из $_GET
         $show = isset($_GET['show']) ? $_GET['show'] : 'description';
@@ -17,7 +17,7 @@ class ObjectController extends BaseVideocardsTwigController
             $this->template = "__object.twig";
         }
 
-        parent::get();
+        parent::get($context); // пробросили параметр
     }
 
     public function getContext(): array

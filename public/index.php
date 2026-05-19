@@ -7,6 +7,7 @@ require_once "../controllers/MainController.php"; // добавим в само�
 require_once "../controllers/ObjectController.php"; // добавил 
 require_once "../controllers/SearchController.php"; // добавил 5.4
 
+require_once "../controllers/VideocardsObjectCreateController.php"; // добавил 5.5
 
 require_once "../controllers/Controller404.php";
 
@@ -30,7 +31,7 @@ $pdo = new PDO("mysql:host=localhost;dbname=videocards_db;charset=utf8", "root",
 
 $router = new Router($twig, $pdo);
 $router->add("/search", SearchController::class);
-
+$router->add("/create", VideocardsObjectCreateController::class);
 $router->add("/", MainController::class);
 $router->add("/videocards_object/(?P<id>\d+)", ObjectController::class);
 
