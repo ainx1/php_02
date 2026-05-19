@@ -38,14 +38,9 @@ $pdo = new PDO("mysql:host=localhost;dbname=videocards_db;charset=utf8", "root",
 
 $router = new Router($twig, $pdo);
 $router->add("/", MainController::class);
-// Универсальные маршруты:
-// 1. Главная страница объекта
-$router->add("/videocards_object/(\d+)", ObjectController::class);
 
-// 2. Страница с картинкой (используем скобки для ID)
-$router->add("/videocards_object/(\d+)/image", ObjectImageController::class);
-
-// 3. Страница с инфо
-$router->add("/videocards_object/(\d+)/info", ObjectInfoController::class);
+$router->add("/videocards_object/(?P<id>\d+)", ObjectController::class);
+$router->add("/videocards_object/(?P<id>\d+)/image", ObjectImageController::class);
+$router->add("/videocards_object/(?P<id>\d+)/info", ObjectInfoController::class);
 
 $router->get_or_default(Controller404::class);

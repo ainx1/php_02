@@ -1,7 +1,7 @@
 <?php
 class ObjectInfoController extends ObjectController
 {
-    public $template = "__object.twig";
+    public $template = "base_info.twig";
 
     public function getContext(): array
     {
