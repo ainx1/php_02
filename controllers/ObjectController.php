@@ -1,6 +1,6 @@
 <?php
-
-class ObjectController extends TwigBaseController
+require_once "BaseVideocardsTwigController.php"; 
+class ObjectController extends BaseVideocardsTwigController
 {
     public $template = "__object.twig"; // указываем шаблон
 

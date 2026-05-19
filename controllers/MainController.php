@@ -1,20 +1,25 @@
 <?php
-// require_once "TwigBaseController.php"; // импортим TwigBaseController
+require_once "BaseVideocardsTwigController.php";
 
-class MainController extends TwigBaseController
+class MainController extends BaseVideocardsTwigController
 {
     public $template = "main.twig";
     public $title = "Главная";
 
-    // добавим метод getContext()
     public function getContext(): array
     {
         $context = parent::getContext();
 
-        // подготавливаем запрос SELECT * FROM videocards
-        // вообще звездочку не рекомендуется использовать, но на первый раз пойдет
-        $query = $this->pdo->query("SELECT * FROM videocards_object");
+        if (isset($_GET['type'])) {
 
+            $query = $this->pdo->prepare("SELECT * FROM videocards_object WHERE type = :type");
+            $query->bindValue("type", $_GET['type']);
+            $query->execute();
+        } else {
+            // подготавливаем запрос SELECT * FROM videocards
+            // вообще звездочку не рекомендуется использовать, но на первый раз пойдет
+            $query = $this->pdo->query("SELECT * FROM videocards_object");
+        }
         // стягиваем данные через fetchAll() и сохраняем результат в контекст
         $context['videocards_object'] = $query->fetchAll();
 

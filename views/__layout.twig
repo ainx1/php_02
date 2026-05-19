@@ -23,11 +23,8 @@
 
             {% for type in types %}
                 <li class="nav-item">
-
-                    <a class="nav-link" href="#">{{ type.type|title }}</a>
-                    {# <a href="{{item.url}}" class="nav-link {{ title == item.title ? 'active' }}">
-                        {{ item.title }}
-                    </a> #}
+                    <!-- добавил href="/?type={{ type.type }}" -->
+                    <a class="nav-link" href="/?type={{ type.type }}">{{ type.type }}</a>
                 </li>
             {% endfor %}
             </ul>

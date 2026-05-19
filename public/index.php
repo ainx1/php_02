@@ -29,12 +29,12 @@ $context = [];
 // создание класса автоматом открывает соединение
 $pdo = new PDO("mysql:host=localhost;dbname=videocards_db;charset=utf8", "root", "");
 
-// создаем запрос к БД
-$query = $pdo->query("SELECT DISTINCT type FROM videocards_object ORDER BY 1");
-// стягиваем данные
-$types = $query->fetchAll();
-// создаем глобальную переменную в $twig, которая будет достпна из любого шаблона
-$twig->addGlobal("types", $types);
+// // создаем запрос к БД
+// $query = $pdo->query("SELECT DISTINCT type FROM videocards_object ORDER BY 1");
+// // стягиваем данные
+// $types = $query->fetchAll();
+// // создаем глобальную переменную в $twig, которая будет достпна из любого шаблона
+// $twig->addGlobal("types", $types);
 
 $router = new Router($twig, $pdo);
 
