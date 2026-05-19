@@ -19,7 +19,6 @@ class TwigBaseController extends BaseController
     // {
     //     $this->twig = $twig;
     // }
-
     // добавляем
     public function setTwig($twig) {
         $this->twig = $twig;
@@ -33,11 +32,11 @@ class TwigBaseController extends BaseController
 
         $context['current_url'] = $_SERVER['REQUEST_URI'];
 
-        $context['menu'] = [
-            ["title" => "Главная", "url" => "/"],
-            ["title" => "RTX4000", "url" => "/RTX4000", "image" => "/images/RTX4000image.jpg"],
-            ["title" => "RTX5000", "url" => "/RTX5000", "image" => "/images/RTX5000image.jpg"],
-        ];
+        // $context['menu'] = [
+        //     ["title" => "Главная", "url" => "/"],
+        //     ["title" => "RTX4000", "url" => "/RTX4000", "image" => "/images/RTX4000image.jpg"],
+        //     ["title" => "RTX5000", "url" => "/RTX5000", "image" => "/images/RTX5000image.jpg"],
+        // ];
 
         return $context;
     }

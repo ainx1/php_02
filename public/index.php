@@ -8,9 +8,6 @@ require_once "../controllers/ObjectController.php"; // добавил
 
 require_once "../controllers/Controller404.php";
 
-// require_once "../controllers/ObjectInfoController.php";
-// require_once "../controllers/ObjectImageController.php";
-
 // создаем загрузчик шаблонов, и указываем папку с шаблонами
 // \Twig\Loader\FilesystemLoader -- это типа как в C# писать Twig.Loader.FilesystemLoader, 
 // только слеш вместо точек
@@ -21,9 +18,9 @@ $twig = new \Twig\Environment($loader, [
 ]);
 $twig->addExtension(new \Twig\Extension\DebugExtension()); // и активируем расширение
 
-$title = "";
-$template = "";
-$context = [];
+// $title = "";
+// $template = "";
+// $context = [];
 
 // создаем экземпляр класса и передаем в него параметры подключения
 // создание класса автоматом открывает соединение
@@ -33,7 +30,5 @@ $router = new Router($twig, $pdo);
 
 $router->add("/", MainController::class);
 $router->add("/videocards_object/(?P<id>\d+)", ObjectController::class);
-// $router->add("/videocards_object/(?P<id>\d+)/image", ObjectImageController::class);
-// $router->add("/videocards_object/(?P<id>\d+)/info", ObjectInfoController::class);
 
 $router->get_or_default(Controller404::class);

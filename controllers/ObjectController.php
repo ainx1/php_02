@@ -23,10 +23,6 @@ class ObjectController extends BaseVideocardsTwigController
     public function getContext(): array
     {
         $context = parent::getContext();
-        // добавил вывод params
-        // echo "<pre>";
-        // print_r($this->params);
-        // echo "</pre>";
 
         // создам запрос, под параметр создаем переменную my_id в запросе
         $query = $this->pdo->prepare("SELECT * FROM videocards_object WHERE id= :my_id");
