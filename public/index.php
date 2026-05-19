@@ -6,13 +6,6 @@ require_once '../framework/autoload.php';
 require_once "../controllers/MainController.php"; // добавим в самом верху ссылку на наш контроллер
 require_once "../controllers/ObjectController.php"; // добавил 
 
-require_once "../controllers/RTX4000Controller.php";
-require_once "../controllers/RTX5000Controller.php";
-require_once "../controllers/RTX5000ImageController.php";
-require_once "../controllers/RTX4000ImageController.php";
-require_once "../controllers/RTX4000InfoController.php";
-require_once "../controllers/RTX5000InfoController.php";
-
 require_once "../controllers/Controller404.php";
 
 require_once "../controllers/ObjectInfoController.php";
