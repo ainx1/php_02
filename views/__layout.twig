@@ -21,11 +21,13 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
 
-            {% for item in menu %}
+            {% for type in types %}
                 <li class="nav-item">
-                    <a href="{{item.url}}" class="nav-link {{ title == item.title ? 'active' }}">
+
+                    <a class="nav-link" href="#">{{ type.type|title }}</a>
+                    {# <a href="{{item.url}}" class="nav-link {{ title == item.title ? 'active' }}">
                         {{ item.title }}
-                    </a>
+                    </a> #}
                 </li>
             {% endfor %}
             </ul>

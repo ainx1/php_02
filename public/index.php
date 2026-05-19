@@ -29,9 +29,16 @@ $context = [];
 // создание класса автоматом открывает соединение
 $pdo = new PDO("mysql:host=localhost;dbname=videocards_db;charset=utf8", "root", "");
 
-$router = new Router($twig, $pdo);
-$router->add("/", MainController::class);
+// создаем запрос к БД
+$query = $pdo->query("SELECT DISTINCT type FROM videocards_object ORDER BY 1");
+// стягиваем данные
+$types = $query->fetchAll();
+// создаем глобальную переменную в $twig, которая будет достпна из любого шаблона
+$twig->addGlobal("types", $types);
 
+$router = new Router($twig, $pdo);
+
+$router->add("/", MainController::class);
 $router->add("/videocards_object/(?P<id>\d+)", ObjectController::class);
 $router->add("/videocards_object/(?P<id>\d+)/image", ObjectImageController::class);
 $router->add("/videocards_object/(?P<id>\d+)/info", ObjectInfoController::class);
