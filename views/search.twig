@@ -2,4 +2,14 @@
 
 {% block content %}
     Поиск
+
+    <form action="">
+        <select name="type">
+            <option value="GTX">GTX</option>
+            <option value="RTX">RTX</option>
+        </select>
+        <label>Название <input type="text" name="title"></label>
+        <button type="submit">Найти</button>
+    </form>
+
 {% endblock %}
