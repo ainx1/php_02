@@ -1,6 +1,9 @@
 <?php
 // подключаем пакеты которые установили через composer
 require_once '../vendor/autoload.php';
+
+require_once '../framework/autoload.php';
+
 require_once "../controllers/MainController.php"; // добавим в самом верху ссылку на наш контроллер
 require_once "../controllers/RTX4000Controller.php";
 require_once "../controllers/RTX5000Controller.php";
@@ -38,19 +41,8 @@ $pdo = new PDO("mysql:host=localhost;dbname=videocards_db;charset=utf8", "root",
 
 if ($url == "/") {
     $controller = new MainController($twig);
-} elseif (preg_match("#^/RTX4000/image#", $url)) {
-    $controller = new RTX4000ImageController($twig);
-} elseif (preg_match("#^/RTX4000/info#", $url)) {
-    $controller = new RTX4000InfoController($twig);
-} elseif (preg_match("#^/RTX4000#", $url)) {
-    $controller = new RTX4000Controller($twig);
-} elseif (preg_match("#^/RTX5000/image#", $url)) {
-    $controller = new RTX5000ImageController($twig);
-} elseif (preg_match("#^/RTX5000/info#", $url)) {
-    $controller = new RTX5000InfoController($twig);
-} elseif (preg_match("#^/RTX5000#", $url)) {
-    $controller = new RTX5000Controller($twig);
 }
+
 if ($controller) {
     $controller->setPDO($pdo); // а тут передаем PDO в контроллер
     $controller->get();

@@ -1,5 +1,5 @@
 <?php
-require_once "TwigBaseController.php"; // импортим TwigBaseController
+// require_once "TwigBaseController.php"; // импортим TwigBaseController
 
 class RTX5000Controller extends TwigBaseController
 {
