@@ -5,10 +5,9 @@
 
 <div class="row">
     {% for object in videocards_object %} 
-
-        {% set item_with_url = object|merge({'url': '#'}) %}
         
-        {% include "_gpu_card.twig" with {'item': item_with_url} %}
+        {% include "_gpu_card.twig" with {'item': object} %}
+        
     {% endfor %}
 
 </div>

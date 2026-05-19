@@ -10,12 +10,12 @@
                 <div class="col-10 col-sm-6 col-md-8 col-lg-6">
         
                     <div class="d-flex flex-column mb-1">
-                        {{ m.btn(item.title, item.url, true) }}
+                        {{ m.btn(item.title, "/videocards_object/" ~ item.id, true) }}
                     </div>
                     
                     <div class="d-flex justify-content-evenly">
-                            {{ m.btn("Картинка", item.url ~ "/image") }}
-                            {{ m.btn("Описание", item.url ~ "/info") }}
+                            {{ m.btn("Картинка", "/videocards_object/" ~ item.id ~ "/image") }}
+                            {{ m.btn("Описание", "/videocards_object/" ~ item.id ~ "/info") }}
                     </div>
                     
                 </div>

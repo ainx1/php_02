@@ -4,6 +4,8 @@ require_once '../vendor/autoload.php';
 require_once '../framework/autoload.php';
 
 require_once "../controllers/MainController.php"; // добавим в самом верху ссылку на наш контроллер
+require_once "../controllers/ObjectController.php"; // добавил 
+
 require_once "../controllers/RTX4000Controller.php";
 require_once "../controllers/RTX5000Controller.php";
 require_once "../controllers/RTX5000ImageController.php";
@@ -34,6 +36,7 @@ $pdo = new PDO("mysql:host=localhost;dbname=videocards_db;charset=utf8", "root",
 $router = new Router($twig, $pdo);
 $router->add("/", MainController::class);
 $router->add("/RTX4000", RTX4000Controller::class);
-$router->add("/RTX5000", RTX5000Controller::class);
+// $router->add("/RTX5000", RTX5000Controller::class);
+$router->add("/videocards_object/(?P<id>\d+)", ObjectController::class);
 
 $router->get_or_default(Controller404::class);
