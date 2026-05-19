@@ -1,23 +1,46 @@
 {% extends "__layout.twig" %}
 
 {% block content %}
-    Поиск
+<h3 class="mb-3">Поиск</h3>
 
     <form action="">
-        <select name="type">
-            <option value="GTX">GTX</option>
-            <option value="RTX">RTX</option>
-        </select>
-        <label>Название <input type="text" name="title"></label>
-        <button type="submit">Найти</button>
+
+        <div class="row g-3 align-items-end">   
+            <div class="col-md-auto">
+               <label class="form-label">Тип</label>
+                    <select name="type" class="form-select">
+                        <option value="all" {% if type == 'all' %} selected{% endif %}>Все</option>
+                        <option value="GTX" {% if type == 'GTX' %} selected{% endif %}>GTX</option>
+                        <option value="RTX" {% if type == 'RTX' %} selected{% endif %}>RTX</option>
+                    </select> 
+            </div>
+
+            <div class="col-md">
+                <label class="form-label">Описание</label>
+                <input type="text" name="info" class="form-control" placeholder="Описание" value="{{ info }}">
+            </div>
+
+            <div class="col-md">
+                <label class="form-label">Название</label>
+                <input type="text" name="title" class="form-control" placeholder="Название" value="{{ title }}">
+            </div>
+
+            <div class="col-sm-12 col-lg-2 col-md-2">
+                <button type="submit" class="btn btn-primary w-100">Найти</button>
+            </div>
+
+        </div>
     </form>
 
-    <div class="row">
+    <hr>
+
+    <div class="list-group">
     {% for obj in objects %}
-            <a href="/videocards_object/{{ obj.id }}">{{ obj.title }}</a>
+        <a href="/videocards_object/{{ obj.id }}" class="list-group-item list-group-item-action">
+            {{ obj.title }}
+        </a>
     {% else %}
-        Ничего не найдено
+        <div class="text-muted">Ничего не найдено</div>
     {% endfor %}
     </div>
-
 {% endblock %}
