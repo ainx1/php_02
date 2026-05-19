@@ -1,8 +1,24 @@
 <?php
-require_once "BaseVideocardsTwigController.php"; 
+require_once "BaseVideocardsTwigController.php";
 class ObjectController extends BaseVideocardsTwigController
 {
     public $template = "__object.twig"; // указываем шаблон
+
+    public function get()
+    {
+        // Получаем 'show' из $_GET
+        $show = isset($_GET['show']) ? $_GET['show'] : 'description';
+
+        if ($show == 'image') {
+            $this->template = "base_image.twig";
+        } elseif ($show == 'info') {
+            $this->template = "base_info.twig";
+        } else {
+            $this->template = "__object.twig";
+        }
+
+        parent::get();
+    }
 
     public function getContext(): array
     {
@@ -25,7 +41,6 @@ class ObjectController extends BaseVideocardsTwigController
         $context['title'] = $data['title'];
         $context['image'] = $data['image'];
         $context['info'] = $data['info'];
-
         // передаем описание из БД в контекст
         $context['description'] = $data['description'];
 

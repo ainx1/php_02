@@ -8,8 +8,8 @@ require_once "../controllers/ObjectController.php"; // добавил
 
 require_once "../controllers/Controller404.php";
 
-require_once "../controllers/ObjectInfoController.php";
-require_once "../controllers/ObjectImageController.php";
+// require_once "../controllers/ObjectInfoController.php";
+// require_once "../controllers/ObjectImageController.php";
 
 // создаем загрузчик шаблонов, и указываем папку с шаблонами
 // \Twig\Loader\FilesystemLoader -- это типа как в C# писать Twig.Loader.FilesystemLoader, 
@@ -29,18 +29,11 @@ $context = [];
 // создание класса автоматом открывает соединение
 $pdo = new PDO("mysql:host=localhost;dbname=videocards_db;charset=utf8", "root", "");
 
-// // создаем запрос к БД
-// $query = $pdo->query("SELECT DISTINCT type FROM videocards_object ORDER BY 1");
-// // стягиваем данные
-// $types = $query->fetchAll();
-// // создаем глобальную переменную в $twig, которая будет достпна из любого шаблона
-// $twig->addGlobal("types", $types);
-
 $router = new Router($twig, $pdo);
 
 $router->add("/", MainController::class);
 $router->add("/videocards_object/(?P<id>\d+)", ObjectController::class);
-$router->add("/videocards_object/(?P<id>\d+)/image", ObjectImageController::class);
-$router->add("/videocards_object/(?P<id>\d+)/info", ObjectInfoController::class);
+// $router->add("/videocards_object/(?P<id>\d+)/image", ObjectImageController::class);
+// $router->add("/videocards_object/(?P<id>\d+)/info", ObjectInfoController::class);
 
 $router->get_or_default(Controller404::class);

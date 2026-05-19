@@ -5,10 +5,11 @@
         <h1>{{ title }}</h1>
         
         <div class="nav-pills mb-2">
-            {% set image_url = "/videocards_object/" ~ id ~ "/image" %}
-            {% set info_url = "/videocards_object/" ~ id ~ "/info" %}
 
-            {# Сравниваем: если текущий URL совпадает с URL кнопки, она станет синей #}
+            {% set image_url = "/videocards_object/" ~ id ~ "?show=image" %}
+            {% set info_url = "/videocards_object/" ~ id ~ "?show=info" %}
+
+            {# если текущий URL совпадает с URL кнопки, она станет синей #}
             {{ m.btn("Картинка", image_url, current_url == image_url) }}
             {{ m.btn("Описание", info_url, current_url == info_url) }}
         </div>
