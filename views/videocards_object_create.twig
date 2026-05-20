@@ -32,9 +32,15 @@
             </select>
         </div>
         <div class="col-12">
+            {# //так как когда тип файл то value не работает и картинки нет а если текст то нормально работает, то для того чтобы при редактировании не потерять картинку, если пользователь не загрузил новую, мы добавляем скрытое поле, в котором будет храниться старое значение картинки #}
+            <input type="hidden" name="old_image" value="{{ object.image }}">
+
                  <div class="mb-3">
                 <label for="formFile" class="form-label">Картинка</label>
-                <input class="form-control" type="file" name="image" value="{{ object.image}}">
+                {% if object.image %}
+                    <img src="{{ object.image }}" style="height: 100px; display: block;" class="mb-2">
+                {% endif %}
+                <input class="form-control" type="file" name="image">
             </div>
             <textarea name="info" placeholder="Полное описание..." class="form-control" rows="5">{{ object.info }}</textarea>
         </div>
