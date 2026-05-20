@@ -1,7 +1,17 @@
 {% import "macros.twig" as m %}
 
 <div class="col-md-6 mb-4">
-    <div class="card h-100 shadow-sm">
+    <div class="card h-100 shadow-sm position-relative">
+
+        <div class="position-absolute" style="right: 4px; top: 4px">
+            <form action="/videocards_object/delete" method="POST">
+                <input type="hidden" name="id" value="{{ item.id }}">
+                <button type="submit" class="btn btn-danger">
+                    <i class="fas fa-times"></i>
+                </button>
+            </form>
+        </div>
+
         <img src="{{ item.image }}" class="card-img-top" alt="{{ item.title }}">
         
         <div class="card-body text-center">

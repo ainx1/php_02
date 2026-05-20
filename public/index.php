@@ -9,7 +9,9 @@ require_once "../controllers/SearchController.php"; // добавил 5.4
 
 require_once "../controllers/VideocardsObjectCreateController.php"; // добавил 5.5
 require_once "../controllers/TypeCreateController.php";
+require_once "../controllers/VideocardsObjectDeleteController.php"; // добавил 5.6
 require_once "../controllers/Controller404.php";
+
 
 // создаем загрузчик шаблонов, и указываем папку с шаблонами
 // \Twig\Loader\FilesystemLoader -- это типа как в C# писать Twig.Loader.FilesystemLoader, 
@@ -35,5 +37,6 @@ $router->add("/create", VideocardsObjectCreateController::class);
 $router->add("/type/create", TypeCreateController::class);
 $router->add("/", MainController::class);
 $router->add("/videocards_object/(?P<id>\d+)", ObjectController::class);
+$router->add("/videocards_object/delete", VideocardsObjectDeleteController::class);
 
 $router->get_or_default(Controller404::class);
