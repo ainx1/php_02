@@ -13,7 +13,7 @@ require_once "../controllers/VideocardsObjectDeleteController.php"; // доба�
 require_once "../controllers/VideocardsObjectUpdateController.php"; // добавил 5.7
 require_once "../controllers/Controller404.php";
 
-
+require_once "../middlewares/LoginRequiredMiddleware.php"; // добавил 6.1
 // создаем загрузчик шаблонов, и указываем папку с шаблонами
 // \Twig\Loader\FilesystemLoader -- это типа как в C# писать Twig.Loader.FilesystemLoader, 
 // только слеш вместо точек
@@ -34,11 +34,19 @@ $pdo = new PDO("mysql:host=localhost;dbname=videocards_db;charset=utf8", "root",
 
 $router = new Router($twig, $pdo);
 $router->add("/search", SearchController::class);
-$router->add("/create", VideocardsObjectCreateController::class);
-$router->add("/type/create", TypeCreateController::class);
 $router->add("/", MainController::class);
 $router->add("/videocards_object/(?P<id>\d+)", ObjectController::class);
-$router->add("/videocards_object/delete", VideocardsObjectDeleteController::class);
-$router->add("/videocards_object/(?P<id>\d+)/edit", VideocardsObjectUpdateController::class);
+
+$router->add("/create", VideocardsObjectCreateController::class)
+    ->middleware(new LoginRequiredMiddleware());
+
+$router->add("/type/create", TypeCreateController::class)
+    ->middleware(new LoginRequiredMiddleware());
+
+$router->add("/videocards_object/delete", VideocardsObjectDeleteController::class)
+    ->middleware(new LoginRequiredMiddleware());
+
+$router->add("/videocards_object/(?P<id>\d+)/edit", VideocardsObjectUpdateController::class)
+    ->middleware(new LoginRequiredMiddleware());
 
 $router->get_or_default(Controller404::class);
