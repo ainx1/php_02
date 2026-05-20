@@ -1,40 +1,42 @@
 {% extends "__layout.twig" %}
 
 {% block content %}
-    <h1>Добавление объекта видеокарт</h1>
+    <h1>{% if object %}Редактирование{% else %}Добавление{% endif %} обьекта</h1>
     <hr>
 
     {% if message %}
         <div class="alert alert-info">
             {{ message }}
-            <a href="/videocards_object/{{id}}"> открыть новый обьект</a>
+            <a href="/videocards_object/{{ object.id|default(id) }}"> открыть обьект</a>
         </div>
     {% endif %}
 
     <form action="" enctype="multipart/form-data" method="POST" class="row g-3">
         <div class="col-4">
             <label class="form-label">Название</label>
-            <input type="text" class="form-control" name="title">
+            <input type="text" class="form-control" name="title" value="{{object.title}}">
         </div>
         <div class="col-4">
             <label class="form-label">Краткое описание</label>
-            <input type="text" class="form-control" name="description">
+            <input type="text" class="form-control" name="description" value="{{object.description}}">
         </div>
         <div class="col-4">
             <label class="form-label">Тип</label>
             {#  при добавлении новых объектов в списке выводить значения из таблицы #}
             <select class="form-control" name="type_id">
                 {% for type in types %}
-                    <option value="{{ type.id }}">{{ type.title }}</option>
+                    <option value="{{ type.id }}" {% if type.id == object.type_id %}selected{% endif %}>
+                        {{ type.title }}
+                    </option>
                 {% endfor %}
             </select>
         </div>
         <div class="col-12">
                  <div class="mb-3">
                 <label for="formFile" class="form-label">Картинка</label>
-                <input class="form-control" type="file" name="image">
+                <input class="form-control" type="file" name="image" value="{{ object.image}}">
             </div>
-            <textarea name="info" placeholder="Полное описание..." class="form-control" rows="5"></textarea>
+            <textarea name="info" placeholder="Полное описание..." class="form-control" rows="5">{{ object.info }}</textarea>
         </div>
         <div class="col-12 text-end">
             <button type="submit" class="btn btn-primary">Добавить</button>

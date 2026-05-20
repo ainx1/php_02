@@ -11,6 +11,13 @@
                 </button>
             </form>
         </div>
+
+        <div class="position-absolute" style="right: 48px; top: 4px">
+            <a href="/videocards_object/{{ item.id }}/edit" class="btn btn-warning">
+                <i class="fas fa-edit"></i>
+            </a>
+        </div>
+
         <img src="{{ item.image }}" class="card-img-top"
         style="aspect-ratio: 1.8 / 1; object-fit: cover;"" alt="{{ item.title }}">
         <div class="card-body text-center">
